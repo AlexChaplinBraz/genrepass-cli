@@ -2,7 +2,8 @@
 
 # Build all release targets and package them for publishing.
 
-ProjectName=$(grep -m1 'name' Cargo.toml | grep -o '"[^"]\+"' | sed 's/"//g')
+#ProjectName=$(grep -m1 'name' Cargo.toml | grep -o '"[^"]\+"' | sed 's/"//g')
+ProjectName='genrepass'
 Version=$(grep -m1 'version' Cargo.toml | grep -o '"[^"]\+"' | sed 's/"//g')
 
 mkdir releases 2>/dev/null
@@ -30,5 +31,7 @@ build_target tar x86_64-unknown-linux-gnu $Version $ProjectName $ProjectName
 build_target tar i686-unknown-linux-gnu $Version $ProjectName $ProjectName
 build_target zip x86_64-pc-windows-gnu $Version $ProjectName ${ProjectName}.exe
 build_target zip i686-pc-windows-gnu $Version $ProjectName ${ProjectName}.exe
+
+sha256sum releases/*$Version* > releases/genrepass-$Version.sha256
 
 printf 'All releases packed correctly.\n'
