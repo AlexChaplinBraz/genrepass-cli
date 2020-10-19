@@ -1,8 +1,4 @@
-# NAME RESERVATION
-
-I'm sleepy.
-
-# Readable password generator
+# Readable password generator (CLI)
 
 **Gen**erate a **re**adable **pass**word from an ordered list of words extracted from text. For improved security, numbers and special characters are inserted at random places.
 
@@ -41,15 +37,15 @@ Available in the AUR by the name of [genrepass-bin](https://aur.archlinux.org/pa
 
 Available through Cargo, which requires Rust to compile it from source.
 
-`cargo install genrepass`
+`cargo install genrepass-cli`
 
 ### Manual
 
-Download the appropriate [latest release](https://github.com/AlexChaplinBraz/genrepass/releases/latest) for your system, unpack and make it available in PATH.
+Download the appropriate [latest release](https://github.com/AlexChaplinBraz/genrepass-cli/releases/latest) for your system, unpack and make it available in PATH.
 
 ## Usage
 
-`genrepass [FLAGS] [OPTIONS] <path>`
+`genrepass [FLAGS] [OPTIONS] <PATH>...`
 
 ### Flags
 
@@ -57,47 +53,46 @@ Download the appropriate [latest release](https://github.com/AlexChaplinBraz/gen
 
 `-c, --clipboard` Copy the generated password/s to clipboard instead of writing to stdout.
 
-`-d, --dont-lower` Don't lowercase at all to keep original casing. Ignores '--force-lower', both manual and automatic.
+`-d, --dont-lower` Don't lowercase at all to keep original casing. Ignores `--force-lower`, both manual and automatic.
 
-`-D, --dont-upper` Don't uppercase at all to keep original casing. Ignores '--force-upper', both manual and automatic.
+`-D, --dont-upper` Don't uppercase at all to keep original casing. Ignores `--force-upper`, both manual and automatic.
 
-`-f, --force-lower` Force the specified amount of lowercase characters. Gets ignored if '--dont-lower' is also set.
+`-f, --force-lower` Force the specified amount of lowercase characters. Gets ignored if `--dont-lower` is also set.
 
-`-F, --force-upper` Force the specified amount of uppercase characters. Gets ignored if '--dont-upper' is also set.
+`-F, --force-upper` Force the specified amount of uppercase characters. Gets ignored if `--dont-upper` is also set.
 
-`-h, --help` Prints help information.
+`-h, --help` Print help and exit.
 
-`-k, --keep-nums` Choose to keep numbers from the source in the password. It will treat blocks of numbers as words, not counting them towards the amount of numbers to insert into the password.
+`-k, --keep-numbers` Choose to keep numbers from the source in the password. It will treat blocks of numbers as words, not counting them towards the amount of numbers to insert into the password.
 
-`-X, --randomize` Shuffle the words. Useful if the source text is just a list of words without order anyway and you want to have a different order with each run of the program.
+`-X, --randomise` Shuffle the words. Useful if the source text is just a list of words without order anyway and you want to have a different order with each run of the program.
 
 `-r, --replace` Replace the original characters. Instead of inserting the numbers and special characters (which preserves the original words), replace the characters at random positions.
 
-`-V, --version` Prints version information
+`-v, --version` Print version and exit.
 
 
 ### Options
 
-`-L, --length <length>` Set the length of the password. Can either be a range like 24-30, which will generate a password between that length, or it can be an exact number like 25 for a password of that exact length. Default: 24-30
+`-L, --length <RANGE>` Set the length of the password. Can either be a range like 24-30, which will generate a password between that length, or it can be an exact number like 25 for a password of that exact length. **Default: 24-30**
 
-`-l, --lower <lower>` Amount of lowercase characters. Can take either a range like 2-4 or an exact amount like 2. If there are no lowercase characters, the '--force-lower' flag is turned on automatically to decapitalise up to the specified amount of alphabetic characters. But if there's at least one lowercase character there won't be any decapitalisation unless '--force-lower' is turned on manually. Default: 1-2
+`-l, --lower-amount <RANGE>` Amount of lowercase characters. Can take either a range like 2-4 or an exact amount like 2. If there are no lowercase characters, the `--force-lower` flag is turned on automatically to decapitalise up to the specified amount of alphabetic characters. But if there's at least one lowercase character there won't be any decapitalisation unless `--force-lower` is turned on manually. **Default: 1-2**
 
-`-R, --resets <max-resets>` Amount of times to try generating password before truncating. If the range is too small or an exact number, it'll be harder to get a fitting set of words, so the word selection will restart if the password exceeds the maximum length. But since it would keep looping if it doesn't find the right length it needs a way to stop, which in this case is simply truncating the password to the maximum length. Default: 10
+`-n, --number-amount <RANGE>` Amount of numbers to insert. Can take either a range like 2-4 or an exact amount like 2. Doesn't take into consideration the amount of numbers already in the password if `--keep-nums` is activated. **Default: 1-2**
 
-`-n, --num <num>` Amount of numbers to insert. Can take either a range like 2-4 or an exact amount like 2. Doesn't take into consideration the amount of numbers already in the password if '--keep-nums' is activated. Default: 1-2
+`-p, --pass-amount <INTEGER>` Amount of passwords to generate. Each password comes on a new line. Useful for providing a list of passwords to choose from. **Default: 1**
 
-`-p, --pass-amount <pass-amount>` Amount of passwords to generate. Each password comes on a new line. Useful for providing a list of passwords to choose from. Default: 1
+`-R, --reset-amount <INTEGER>` Amount of times to try generating password before truncating. If the range is too small or an exact number, it'll be harder to get a fitting set of words, so the word selection will restart if the password exceeds the maximum length. But since it would keep looping if it doesn't find the right length it needs a way to stop, which in this case is simply truncating the password to the maximum length. **Default: 10**
 
-`-s, --special <special>` Amount of special characters to insert. Can take either a range like 2-4 or an exact amount like 2. Default: 1-2
+`-S, --special-chars <CHARS>` The special characters to insert. Non-ASCII characters are not supported. Default: **^!(-_=)$<\[@.#\]>%{~,+}&\***
 
-`-S, --chars <special-chars>` The special characters to insert. Non-ASCII characters are not supported. Default: ^!(-_=)$<[@.#]>%{~,+}&*
+`-s, --special-chars-amount <RANGE>` Amount of special characters to insert. Can take either a range like 2-4 or an exact amount like 2. **Default: 1-2**
 
-`-u, --upper <upper>` Amount of uppercase characters. Can take either a range like 2-4 or an exact amount like 2. If there are no uppercase characters, the '--force-upper' flag is turned on automatically to capitalise up to the specified amount of alphabetic
-characters. But if there's at least one uppercase character there won't be any capitalisation unless '--force-upper' is turned on manually. Default: 1-2
+`-u, --upper-amount <RANGE>` Amount of uppercase characters. Can take either a range like 2-4 or an exact amount like 2. If there are no uppercase characters, the `--force-upper` flag is turned on automatically to capitalise up to the specified amount of alphabetic characters. But if there's at least one uppercase character there won't be any capitalisation unless `--force-upper` is turned on manually. **Default: 1-2**
 
 ### Args
 
-`<path>` Path to text file or directory with text files to source words from.
+`<PATH>...` One or more paths to text file or directory with text files to source words from.
 
 In case of a directory, it recursively parses every file inside it while ignoring non-plaintext files and following links.
 
@@ -105,9 +100,19 @@ Accepts UTF-8 characters, but translates them to ASCII for use in the password. 
 
 ## Changelog
 
+### Version 1.1.0 - 2020-10-19
+
+- Extracted a library from the binary code.
+- Let the library live at [genrepass](https://github.com/AlexChaplinBraz/genrepass).
+- Created [genrepass-cli](https://github.com/AlexChaplinBraz/genrepass-cli) to host the CLI.
+- Some user-facing improvements.
+    - Can now input more than one path as source for words.
+    - More precise errors and clearer arguments.
+    - Coloured help message.
+
 ### Version 1.0.1 - 2020-10-13
 
-- Switch from clipboard-ext to copypasta-ext, adding support for Wayland clipboard [[PR1]](https://github.com/AlexChaplinBraz/genrepass/pull/1)
+- Switched from clipboard-ext to copypasta-ext, adding support for Wayland clipboard [[PR1]](https://github.com/AlexChaplinBraz/genrepass/pull/1).
 
 ## Builds for other systems
 
@@ -116,6 +121,14 @@ I'm sure this program can be compiled for other platforms like macOS, but I didn
 ## History
 
 This is a port of my own shell script [genrepass.sh](https://github.com/AlexChaplinBraz/genrepass.sh). I've written it as practice while learning Rust and ended up improving it in various aspects.
+
+It used to be hosted at [genrepass](https://github.com/AlexChaplinBraz/genrepass), but I've realised I could extract a library out of it so I did, and ended up improving it even more, writing a good documentation and a sensible API.
+
+To remove unnecessary dependencies from the library, the CLI part of the program was moved to [genrepass-cli](https://github.com/AlexChaplinBraz/genrepass-cli).
+
+## Donate
+
+Please do feel free to [support me](https://alexchaplinbraz.com/donate) if I was helpful and you aren't in a tight financial situation.
 
 ## License
 
