@@ -139,14 +139,23 @@ checksum = "9ea835d29036a4087793836fa931b08837ad5e957da9e23886b29586fb9b6650"
 
 [[package]]
 name = "genrepass"
-version = "1.0.1"
+version = "1.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cb696c9254955196c7919cec5acd45288868e2d91c93fce3a682d4503d25c819"
 dependencies = [
- "clap",
- "copypasta-ext",
  "deunicode",
  "rand",
  "regex",
  "snafu",
+]
+
+[[package]]
+name = "genrepass-cli"
+version = "0.0.0"
+dependencies = [
+ "clap",
+ "copypasta-ext",
+ "genrepass",
 ]
 
 [[package]]
