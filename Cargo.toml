@@ -10,7 +10,7 @@ documentation = "https://github.com/AlexChaplinBraz/genrepass"
 readme = "README.md"
 license = "MIT"
 edition = "2018"
-keywords = ["generate", "readable", "secure", "password", "text", ]
+keywords = ["generate", "readable", "secure", "password", "cli", ]
 categories = ["command-line-utilities"]
 exclude = ["/releases"]
 
