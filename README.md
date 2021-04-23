@@ -128,7 +128,8 @@ To remove unnecessary dependencies from the library, the CLI part of the program
 
 ## Donate
 
-Please do feel free to [support me](https://alexchaplinbraz.com/donate) if I was helpful and you aren't in a tight financial situation.
+Please consider supporting me through [donate.alexchaplinbraz.com](https://donate.alexchaplinbraz.com/?project=3)
+to motivate me to keep working on this project.
 
 ## License
 
