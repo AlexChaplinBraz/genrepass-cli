@@ -1,21 +1,25 @@
 # Readable password generator (CLI)
 
-**Gen**erate **re**adable **pass**words from an ordered list of words extracted from text. For improved security, numbers and special characters are inserted at random places.
+**Gen**erate **re**adable **pass**words from an ordered list of words extracted from text.
+For improved security, numbers and special characters are inserted at random places.
 
-The point is to replace the standard password generation that is very tedious to input manually, with a still very secure but much easier to write password. For the rare occasion where you have to input it manually, like on a smartphone you're not syncing them to. It also makes for some interesting passwords, depending on what you choose to use as source.
+The point is to replace the standard password generation that is very tedious to input manually,
+with a still very secure but much easier to write password.
+For the rare occasion where you have to input it manually, like on a smartphone you're not syncing them to.
+It also makes for some interesting passwords, depending on what you choose to use as source.
 
 Written based on a Computerphile video: [How to Choose a Password](https://youtu.be/3NjQ9b3pgIg).
 
-## Examples
+## Some examples of possible passwords
 
 ```
 > genrepass ~/Documents
 Hemanag6estogetami~ssion
 
-> genrepass -C ~/Documents
+> genrepass -C ~/Journals/2022.md
 Fr68omTheseMeth&odsY#ouCanT
 
-> genrepass -Cp5 ~/Documents
+> genrepass -Cp5 ~/Documents ~/Journals/2022.md
 ModsSo$ThatPeopleAre7AbleTo
 Shou$ldSt%illBeResp0ected
 ThisSoftw&areAndIn4co$rporate
@@ -31,8 +35,6 @@ Currently available for both 32bit and 64bit versions of Linux and Windows.
 
 Available in the AUR by the name of [genrepass-bin](https://aur.archlinux.org/packages/genrepass-bin/).
 
-`yay -S genrepass-bin`
-
 ### Cargo
 
 Available through Cargo, which requires Rust to compile it from source.
@@ -41,7 +43,8 @@ Available through Cargo, which requires Rust to compile it from source.
 
 ### Manual
 
-Download the appropriate [latest release](https://github.com/AlexChaplinBraz/genrepass-cli/releases/latest) for your system, unpack and make it available in PATH.
+Download the appropriate [latest release](https://github.com/AlexChaplinBraz/genrepass-cli/releases/latest)
+for your system, unpack and make it available in PATH.
 
 ## Usage
 
@@ -98,33 +101,23 @@ In case of a directory, it recursively parses every file inside it while ignorin
 
 Accepts UTF-8 characters, but translates them to ASCII for use in the password. So if a word in another language is encountered, it will be transformed into a kind of phonetic spelling in ASCII, and if an emoji is encountered, it will be translated into its meaning, for example, :D would become 'grinning'.
 
-## Changelog
-
-### Version 1.1.0 - 2020-10-19
-
-- Extracted a library from the binary code.
-- Let the library live at [genrepass](https://github.com/AlexChaplinBraz/genrepass).
-- Created [genrepass-cli](https://github.com/AlexChaplinBraz/genrepass-cli) to host the CLI.
-- Some user-facing improvements.
-    - Can now input more than one path as source for words.
-    - More precise errors and clearer arguments.
-    - Coloured help message.
-
-### Version 1.0.1 - 2020-10-13
-
-- Switched from clipboard-ext to copypasta-ext, adding support for Wayland clipboard [[PR1]](https://github.com/AlexChaplinBraz/genrepass/pull/1).
-
 ## Builds for other systems
 
-I'm sure this program can be compiled for other platforms like macOS, but I didn't do it because I don't have the capability to test them. If anyone is willing to help with that, I'd appreciate it.
+I'm sure this program can be compiled for other platforms like macOS,
+but I didn't do it because I don't have the capability to test them.
+If anyone is willing to help with that, I'd appreciate it.
 
 ## History
 
-This is a port of my own shell script [genrepass.sh](https://github.com/AlexChaplinBraz/genrepass.sh). I've written it as practice while learning Rust and ended up improving it in various aspects.
+This is a port of [my own shell script](https://github.com/AlexChaplinBraz/shell-scripts/tree/master/genrepass).
+I've written it as practice while learning Rust and ended up improving it in various aspects.
 
-It used to be hosted at [genrepass](https://github.com/AlexChaplinBraz/genrepass), but I've realised I could extract a library out of it so I did, and ended up improving it even more, writing a good documentation and a sensible API.
+It used to be hosted at [genrepass](https://github.com/AlexChaplinBraz/genrepass),
+but I've realised I could extract a library out of it, so I did, and ended up improving it even more,
+writing good documentation and a sensible API.
 
-To remove unnecessary dependencies from the library, the CLI part of the program was moved to [genrepass-cli](https://github.com/AlexChaplinBraz/genrepass-cli).
+To remove unnecessary dependencies from the library,
+the CLI part of the program was moved to [genrepass-cli](https://github.com/AlexChaplinBraz/genrepass-cli).
 
 ## Donate
 
