@@ -103,9 +103,8 @@ Accepts UTF-8 characters, but translates them to ASCII for use in the password. 
 
 ## Builds for other systems
 
-I'm sure this program can be compiled for other platforms like macOS,
-but I didn't do it because I don't have the capability to test them.
-If anyone is willing to help with that, I'd appreciate it.
+No macOS releases because I have no way to test whether they work, but in theory they should compile.
+The only requirement for the system is clipboard support and that seems to be supported for macOS.
 
 ## History
 

@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1.1]
 <!--BEGIN=1.1.1-->
 Last 1.x release before refactor. Updated all dependencies except `clap`.
+
+### Added
+
+- GitHub Actions workflow for releasing new versions.
 <!--END=1.1.1-->
 ## [1.1.0] - 2020-10-19
 
