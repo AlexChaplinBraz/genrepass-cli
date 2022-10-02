@@ -1,7 +1,7 @@
 # Maintainer: Alexander Chaplin Braz <contact@alexchaplinbraz.com>
 pkgname='genrepass-bin'
 _pkgname='genrepass'
-pkgver=REPLACE_RELEASE_VERSION
+pkgver=REPLACE_VERSION
 pkgrel=1
 pkgdesc='Generate a readable password from an ordered list of words extracted from text'
 arch=('x86_64' 'i686')

@@ -1,0 +1,40 @@
+{
+    "version": "REPLACE_VERSION",
+    "description": "Generate a readable password from an ordered list of words extracted from text",
+    "homepage": "https://github.com/AlexChaplinBraz/genrepass-cli",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/AlexChaplinBraz/genrepass-cli/releases/download/REPLACE_VERSION/genrepass-REPLACE_VERSION-x86_64-pc-windows-msvc.zip",
+            "hash": "REPLACE_HASH_64BIT",
+            "extract_dir": "genrepass-REPLACE_VERSION-x86_64-pc-windows-msvc"
+        },
+        "32bit": {
+            "url": "https://github.com/AlexChaplinBraz/genrepass-cli/releases/download/REPLACE_VERSION/genrepass-REPLACE_VERSION-i686-pc-windows-msvc.zip",
+            "hash": "REPLACE_HASH_32BIT",
+            "extract_dir": "genrepass-REPLACE_VERSION-i686-pc-windows-msvc"
+        }
+    },
+    "bin": "genrepass.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/AlexChaplinBraz/genrepass-cli/releases/download/$version/genrepass-$version-x86_64-pc-windows-msvc.zip",
+                "hash": {
+                    "url": "$baseurl/genrepass-$version.sha256",
+                    "regex": "$sha256"
+                },
+                "extract_dir": "genrepass-$version-x86_64-pc-windows-msvc"
+            },
+            "32bit": {
+                "url": "https://github.com/AlexChaplinBraz/genrepass-cli/releases/download/$version/genrepass-$version-i686-pc-windows-msvc.zip",
+                "hash": {
+                    "url": "$baseurl/genrepass-$version.sha256",
+                    "regex": "$sha256"
+                },
+                "extract_dir": "genrepass-$version-i686-pc-windows-msvc"
+            }
+        }
+    }
+}

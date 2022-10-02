@@ -13,6 +13,7 @@ Last 1.x release before refactor. Updated all dependencies except `clap`.
 
 ### Added
 
+- Scoop installation method.
 - GitHub Actions workflow for releasing new versions.
 <!--END=1.1.1-->
 ## [1.1.0] - 2020-10-19

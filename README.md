@@ -35,6 +35,12 @@ Currently available for both 32bit and 64bit versions of Linux and Windows.
 
 Available in the AUR by the name of [genrepass-bin](https://aur.archlinux.org/packages/genrepass-bin/).
 
+### Scoop
+
+Can also install it with [`Scoop`](https://scoop.sh/):
+
+`scoop install https://raw.githubusercontent.com/AlexChaplinBraz/genrepass-cli/master/genrepass.json`
+
 ### Cargo
 
 Available through Cargo, which requires Rust to compile it from source.
