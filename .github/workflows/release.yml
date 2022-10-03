@@ -169,8 +169,8 @@ jobs:
       - name: Update scoop manifest
         shell: bash
         run: |
-          hash_64bit=$(grep x86_64-unknown-linux-gnu packages/genrepass-${{ env.RELEASE_VERSION }}.sha256 | cut -d ' ' -f1)
-          hash_32bit=$(grep i686-unknown-linux-gnu packages/genrepass-${{ env.RELEASE_VERSION }}.sha256 | cut -d ' ' -f1)
+          hash_64bit=$(grep x86_64-pc-windows-msvc packages/genrepass-${{ env.RELEASE_VERSION }}.sha256 | cut -d ' ' -f1)
+          hash_32bit=$(grep i686-pc-windows-msvc packages/genrepass-${{ env.RELEASE_VERSION }}.sha256 | cut -d ' ' -f1)
 
           sed "s/REPLACE_VERSION/$RELEASE_VERSION/g;s/REPLACE_HASH_64BIT/$hash_64bit/;s/REPLACE_HASH_32BIT/$hash_32bit/" \
               genrepass-template.json > genrepass.json

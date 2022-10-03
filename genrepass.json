@@ -6,12 +6,12 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/AlexChaplinBraz/genrepass-cli/releases/download/1.1.1/genrepass-1.1.1-x86_64-pc-windows-msvc.zip",
-            "hash": "3e9d9cf0083a77b73f94c2a5992fa7f2be0c303eac6b998f7299bac40e1960bd",
+            "hash": "422470ce67ac6c2da2594491717e699cd0e50cd15f2ac8fe61d7af9da0856c24",
             "extract_dir": "genrepass-1.1.1-x86_64-pc-windows-msvc"
         },
         "32bit": {
             "url": "https://github.com/AlexChaplinBraz/genrepass-cli/releases/download/1.1.1/genrepass-1.1.1-i686-pc-windows-msvc.zip",
-            "hash": "4cef7612fd24033daac08630f03e083c853eff337f831d5485d515b92e4ee552",
+            "hash": "e242abe89ffb9f6c3e83563625a125c901ef11dc979430dfc6ddf888f4b8c944",
             "extract_dir": "genrepass-1.1.1-i686-pc-windows-msvc"
         }
     },
