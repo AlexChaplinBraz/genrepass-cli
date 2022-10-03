@@ -9,7 +9,7 @@ repository = "https://github.com/AlexChaplinBraz/genrepass-cli"
 documentation = "https://github.com/AlexChaplinBraz/genrepass-cli"
 readme = "README.md"
 license = "MIT"
-edition = "2018"
+edition = "2021"
 keywords = ["generate", "readable", "secure", "password", "cli", ]
 categories = ["command-line-utilities"]
 
