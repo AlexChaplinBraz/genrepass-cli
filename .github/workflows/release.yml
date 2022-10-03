@@ -91,6 +91,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Install dependencies (Ubuntu)
+        if: matrix.target == 'i686-unknown-linux-gnu'
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libx11-xcb-dev:i386 gcc-multilib
+
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
         with:
@@ -141,6 +148,8 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          ref: master
 
       - name: Load packages and extras
         uses: actions/download-artifact@v2
@@ -160,8 +169,8 @@ jobs:
       - name: Update scoop manifest
         shell: bash
         run: |
-          hash_64bit=$(grep x86_64-unknown-linux-gnu genrepass-${{ env.RELEASE_VERSION }}.sha256 | cut -d ' ' -f1)
-          hash_32bit=$(grep i686-unknown-linux-gnu genrepass-${{ env.RELEASE_VERSION }}.sha256 | cut -d ' ' -f1)
+          hash_64bit=$(grep x86_64-unknown-linux-gnu packages/genrepass-${{ env.RELEASE_VERSION }}.sha256 | cut -d ' ' -f1)
+          hash_32bit=$(grep i686-unknown-linux-gnu packages/genrepass-${{ env.RELEASE_VERSION }}.sha256 | cut -d ' ' -f1)
 
           sed "s/REPLACE_VERSION/$RELEASE_VERSION/g;s/REPLACE_HASH_64BIT/$hash_64bit/;s/REPLACE_HASH_32BIT/$hash_32bit/" \
               genrepass-template.json > genrepass.json
@@ -183,13 +192,16 @@ jobs:
         
       - name: Create release title env
         run: echo "RELEASE_TITLE=$(cat release/title)" >> $GITHUB_ENV
+        
+      - name: Move sha256 file to packages
+        run: mv sha256/genrepass-*.sha256 packages/
 
       - name: Create release
         uses: ncipollo/release-action@v1
         with:
           name: ${{ env.RELEASE_TITLE }}
           bodyFile: release/changelog.md
-          artifacts: [ "packages/*", "sha256/genrepass-*.sha256" ]
+          artifacts: "packages/*"
           token: ${{ secrets.GITHUB_TOKEN }}
 
   publish-crate:
