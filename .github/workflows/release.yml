@@ -58,7 +58,7 @@ jobs:
           if-no-files-found: error
 
   build-package:
-    name: Create package
+    name: Build package
     needs: preparations
     env:
       RUST_BACKTRACE: 1
@@ -244,10 +244,10 @@ jobs:
         run: |
           sed -i "s/REPLACE_VERSION/${{ env.RELEASE_VERSION }}/" PKGBUILD
           
-          sha256_x86_64=$(grep x86_64-unknown-linux-gnu genrepass-${{ env.RELEASE_VERSION }}.sha256 | cut -d ' ' -f1)
+          sha256_x86_64=$(grep x86_64-unknown-linux-gnu sha256/genrepass-${{ env.RELEASE_VERSION }}.sha256 | cut -d ' ' -f1)
           sed -i "s/REPLACE_SHA256SUMS_X86_64/$sha256_x86_64/" PKGBUILD
 
-          sha256_i686=$(grep i686-unknown-linux-gnu genrepass-${{ env.RELEASE_VERSION }}.sha256 | cut -d ' ' -f1)
+          sha256_i686=$(grep i686-unknown-linux-gnu sha256/genrepass-${{ env.RELEASE_VERSION }}.sha256 | cut -d ' ' -f1)
           sed -i "s/REPLACE_SHA256SUMS_i686/$sha256_i686/" PKGBUILD
 
       - name: Publish to the AUR
